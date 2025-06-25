@@ -24,15 +24,7 @@ public class DFA {
         }
     }
 
-
-    public static int match(int array[][], int value, int currentState){
-        currentState = array[currentState][value];
-        return currentState;
-    }
-
-
-    public static int takeinput(){
-        Scanner sc = new Scanner(System.in);
+    public static void takeinput(Scanner sc){
 
         System.out.println("Enter the Number of Alphbat (Σ):");
         numberOfAlph = sc.nextInt();
@@ -55,6 +47,10 @@ public class DFA {
 
         createTable(sc);
 
+        boolean flage = true;
+
+        while (flage) {
+
         System.out.print("Your input String is (0,1) from Type 0 or (a,b) from Type other 0:");
         int inputType = sc.nextInt();
 
@@ -69,23 +65,14 @@ public class DFA {
 
         for (char ch : input) {
 
-            int index = (inputType == 0) ? ch - '0' : ch - 'a';
+            int value = (inputType == 0) ? ch - '0' : ch - 'a';
 
-            if (index < 0 || index >= numberOfAlph) {
+            if (value < 0 || value >= numberOfAlph) {
                 System.out.println("Invalid character in input: " + ch);
-                return -1;
             }
 
-            currentState = match(TranTable, index, currentState);
+            currentState = TranTable[currentState][value];
         }
-
-        return currentState;
-    }
-
-
-    public static void main(String[] args) {
-
-        int currentState = takeinput();
 
         boolean accepted = false;
 
@@ -98,5 +85,36 @@ public class DFA {
         }
 
         System.out.println(accepted ? "String Accepted" : "String Rejected");
+
+        System.out.println("Do you want check another String press any number expect 0, for not press 0:");
+        int checkString = sc.nextInt();
+
+        if (checkString == 0) {
+
+            flage = false;
+        }
+    }
+    }
+
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        boolean flage = true;
+
+        while (flage) {
+
+        takeinput(sc);
+
+        System.out.println("Do you want check another DFA press any number expect 0, for not press 0:");
+        int check = sc.nextInt();
+
+        if (check == 0) {
+
+            flage = false;
+        }
+    }
+
     }
 }
