@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DFABuilder } from './components/DFABuilder';
 import { StringTester } from './components/StringTester';
 import { DFA } from './types/dfa';
-import { Cpu, Github, University } from 'lucide-react';
+import { Cpu, Github, CaseSensitive as University } from 'lucide-react';
 
 function App() {
   const [dfa, setDFA] = useState<DFA | null>(null);
