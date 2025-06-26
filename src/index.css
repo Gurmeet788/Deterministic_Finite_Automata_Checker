@@ -4,7 +4,7 @@
 
 @layer base {
   * {
-    @apply border-slate-200;
+    border-color: theme('colors.slate.200');
   }
   body {
     @apply bg-gradient-to-br from-slate-50 to-blue-50 text-slate-900;
